@@ -1,8 +1,0 @@
-Hour=0, Sec=0, ControlIter=1, Element=Capacitor.mdv201_hn_2_116_abc28285-1, Action=**ARMED**, DELAY= 15 SEC
-Hour=0, Sec=0, ControlIter=1, Element=Capacitor.mdv201_hn_2_818_abc63707-1, Action=**ARMED**, DELAY= 15 SEC
-Hour=0, Sec=0, ControlIter=1, Element=Capacitor.mdv201_hn_2_345_abc8081-1, Action=**ARMED**, DELAY= 15 SEC
-Hour=0, Sec=0, ControlIter=1, Element=Capacitor.mdv201_da_8_153_abc74433-1, Action=**ARMED**, DELAY= 15 SEC
-Hour=0, Sec=0, ControlIter=1, Element=Capacitor.mdv201_da_8_153_abc74433-1, Action=**OPENED**
-Hour=0, Sec=0, ControlIter=1, Element=Capacitor.mdv201_hn_2_345_abc8081-1, Action=**OPENED**
-Hour=0, Sec=0, ControlIter=1, Element=Capacitor.mdv201_hn_2_818_abc63707-1, Action=**OPENED**
-Hour=0, Sec=0, ControlIter=1, Element=Capacitor.mdv201_hn_2_116_abc28285-1, Action=**OPENED**
