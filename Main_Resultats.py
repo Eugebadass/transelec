@@ -1,9 +1,9 @@
 # from file import function
 import os
-import Resultats_Finaux
+ROOT_DIR = os.path.dirname(os.path.abspath(__file__)) #Variable globale correspondant au dossier local du projet
+
 # Mettre le Path qui se rend où vous mettez tous les fichiers provenant d'OpenDSS (les exports)
-Path = r"C:\Users\abcotech\Documents\transelec"
-#C:\Users\LinaMarcelaZuluaga\Documents\OpenDSS\EPRITestCircuits\ckt5
+Path = ROOT_DIR
 from Resultats_Finaux import *
 
 NombreCondensateur = CondensateurOuvert(Path) #Return somme du nombre de fois que le banc de condensateur est activé (À prendre en note)
@@ -25,10 +25,10 @@ PertesLines, PertesTransfo = ListerPertesTransfoLines(Path) #Return la somme des
 # Plotter_Graphes("Évolution du minimum de tension sur le réseau (Simulation témoin)", "Heures", "Tension en V", Heure, Variation[1], "SimulationTMin","C:\\Users\\LinaMarcelaZuluaga\\Documents\\OpenDSS\\EPRITestCircuits\\ckt5\\Resultats")
 # Plotter_Graphes("Évolution de la variation de tension sur le réseau (Simulation témoin)", "Heures", "Tension en V", Heure, Variation[2], "SimulationTVariation","C:\\Users\\LinaMarcelaZuluaga\\Documents\\OpenDSS\\EPRITestCircuits\\ckt5\\Resultats")
 
-SaveInfoCSV(ListeSurcharge, "ListeSurchargeSimuTémoin", r"C:\Users\abcotech\Desktop\Résultats")
-SaveInfoCSV(ListeSouscharge, "ListeSouschargeSimuTémoin", r"C:\Users\abcotech\Desktop\Résultats")
-SaveInfoCSV(Dict1, "SurchargeTransfo1SimuTémoin", r"C:\Users\abcotech\Desktop\Résultats")
-SaveInfoCSV(Dict2, "SurchargeTransfo2SimuTémoin", r"C:\Users\abcotech\Desktop\Résultats")
+SaveInfoCSV(ListeSurcharge, "ListeSurchargeSimuTémoin", ROOT_DIR + r"\Résultats")
+SaveInfoCSV(ListeSouscharge, "ListeSouschargeSimuTémoin", ROOT_DIR + r"\Résultats")
+SaveInfoCSV(Dict1, "SurchargeTransfo1SimuTémoin", ROOT_DIR + r"\Résultats")
+SaveInfoCSV(Dict2, "SurchargeTransfo2SimuTémoin", ROOT_DIR + r"\Résultats")
 
 
 

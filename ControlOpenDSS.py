@@ -9,6 +9,8 @@ from pylab import *
 import os
 import math
 
+ROOT_DIR = os.path.dirname(os.path.abspath(__file__)) #Variable globale correspondant au dossier local du projet
+
 class DSS(object):
 
     #------------------------------------------------------------------------------------------------------------------#
@@ -58,8 +60,10 @@ class DSS(object):
         self.consumersNames_ltc = []
     #------------------------------------------------------------------------------------------------------------------#
 
-    def run_simple_test(self):
+    def run_simple_test(self): #the new runmaster script
+        self.dssText.Command = "clearAll"
         self.dssText.Command = "compile " + self.dssFileName
+        self.dssText.Command = "Set Datapath=" + ROOT_DIR
 
     #------------------------------------------------------------------------------------------------------------------#
     def redirect_curves(self, OpenDSS_folder_path, loadinglevel, pvGenCurve):

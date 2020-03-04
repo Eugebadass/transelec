@@ -1,14 +1,15 @@
 import csv
 import os
+import math
 import statistics
 import pylatex
-
+ROOT_DIR = os.path.dirname(os.path.abspath(__file__)) #Variable globale correspondant au dossier local du projet
 
 # Mettre le Path qui se rend où vous mettez tous les fichiers provenant d'OpenDSS (les exports)
-#Path = "C:\\Users\\LinaMarcelaZualuag\\Documents\\OpenDSS\\EPRITestCircuits\\ckt5"
+
 
 # changer le working directory à celui que je veux
-os.chdir(r"C:\Users\abcotech\Documents\transelec")
+os.chdir(ROOT_DIR)
 #C:\Users\LinaMarcelaZuluaga\Documents\OpenDSS\EPRITestCircuits\ckt5
 #C:\ProgramData\Microsoft\Windows\Start Menu\Programs\OpenDSS
 
@@ -101,7 +102,7 @@ def ListToDict(liste):
 # Fonction qui compte combien de surcharge et de sous-charge durant chaque itérations
 
 def surcharge_souschargeLOOP():
-    os.chdir(r"C:\Users\abcotech\Desktop\Résultats")
+    os.chdir(ROOT_DIR)
 
 
     Heure = 1
@@ -285,7 +286,6 @@ def SurchargeTransfos(Path):
 #ckt5_EXP_Power.csv
 
 def SubTransfoPower(Path):
-    import math
     KVAR = 0.0
     KW = 0.0
     FP = 0.0

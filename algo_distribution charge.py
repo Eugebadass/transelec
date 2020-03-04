@@ -1,7 +1,9 @@
-import random
+import os
 import numpy as np
 import ControlOpenDSS
 from Resultats_Finaux import *
+
+ROOT_DIR = os.path.dirname(os.path.abspath(__file__)) #Variable globale correspondant au dossier local du projet
 
 
 class Test:
@@ -67,13 +69,13 @@ class Test:
 
         self.add_car_loads()
         self.open_dss_connection()
-        SubTransfoPower(r"C:\Users\abcotech\Documents\transelec")
+        SubTransfoPower(ROOT_DIR)
         self.remove_car_loads()
         n = n - 1
         while n != 0:
             self.add_car_loads()
             self.openDss.run_simple_test()
-            SubTransfoPower(r"C:\Users\abcotech\Documents\transelec")
+            SubTransfoPower(ROOT_DIR)
             self.remove_car_loads()
             n -= 1
         Monte_Carlo(KW_IT)
@@ -97,7 +99,7 @@ class Test:
 
 if __name__ == '__main__':
 
-    test1 = Test("Loads_ckt5_test.dss", r"C:\Users\abcotech\Documents\transelec\Run_Master_ckt5_testing",
+    test1 = Test("Loads_ckt5_test.dss", ROOT_DIR + r"\Master_ckt5",
                  0.6, 0.7)
     test1.remove_car_loads()
-    test1.iterative_test(n=1000)
+    test1.iterative_test(n=1)

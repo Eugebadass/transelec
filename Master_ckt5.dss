@@ -27,3 +27,13 @@ Buscoords  Buscoords_ckt5.dss
 New EnergyMeter.sub element=Line.MDV201_connector terminal=1
 
 
+set CPU=0 
+Set ShowExport = yes
+Solve
+
+Solve mode=Harmonics 
+
+Show Losses
+Show Powers kVA Elem
+Show EVentlog !Pour l'activation des banques de condensateur et des régulateurs
+Export Monitors MDV_SUB_1 ! Va exporter les harmoniques dans un csv
