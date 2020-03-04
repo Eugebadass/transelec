@@ -1,6 +1,7 @@
 import random
 import numpy as np
 import ControlOpenDSS
+from Resultats_Finaux import *
 
 
 class Test:
@@ -66,13 +67,25 @@ class Test:
 
         self.add_car_loads()
         self.open_dss_connection()
+        SubTransfoPower(r"C:\Users\abcotech\Documents\transelec")
         self.remove_car_loads()
         n = n - 1
         while n != 0:
             self.add_car_loads()
             self.openDss.run_simple_test()
+            SubTransfoPower(r"C:\Users\abcotech\Documents\transelec")
             self.remove_car_loads()
             n -= 1
+        Monte_Carlo(KW_IT)
+        Monte_Carlo(listeSurcharge)
+        print(KW_IT)
+        print(len(KW_IT))
+        print(listeSurcharge)
+        print(len(listeSurcharge))
+        KW_IT==[]
+        listeSurcharge==[]
+
+
 
     def simple_test(self):
         if not self.buses:
@@ -84,7 +97,7 @@ class Test:
 
 if __name__ == '__main__':
 
-    test1 = Test("Loads_ckt5_test.dss", "D:\EDCou\Documents\OpenDSS\EPRITestCircuits\ckt5\Run_Master_ckt5_testing",
-                 1.0, 1.0)
+    test1 = Test("Loads_ckt5_test.dss", r"C:\Users\abcotech\Documents\transelec\Run_Master_ckt5_testing",
+                 0.6, 0.7)
     test1.remove_car_loads()
-    test1.iterative_test(n=1)
+    test1.iterative_test(n=1000)

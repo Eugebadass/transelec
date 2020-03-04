@@ -1,11 +1,14 @@
 import csv
 import os
+import statistics
+import pylatex
+
 
 # Mettre le Path qui se rend où vous mettez tous les fichiers provenant d'OpenDSS (les exports)
 #Path = "C:\\Users\\LinaMarcelaZualuag\\Documents\\OpenDSS\\EPRITestCircuits\\ckt5"
 
 # changer le working directory à celui que je veux
-os.chdir("C:\\Users\\fanni\\Downloads\\OpenDSS\\EPRITestCircuits\\ckt5")
+os.chdir(r"C:\Users\abcotech\Documents\transelec")
 #C:\Users\LinaMarcelaZuluaga\Documents\OpenDSS\EPRITestCircuits\ckt5
 #C:\ProgramData\Microsoft\Windows\Start Menu\Programs\OpenDSS
 
@@ -15,11 +18,17 @@ print("current working directory",os.getcwd())
 
 #######################################################################
 # Number of time the condensators are open
+
+KW_IT=[] #VARIABLE GLOBALE POUR LES TESTS ITÉRATIFS
+KVAR_IT=[]
+listeSurcharge=[]
+
+
 def CondensateurOuvert(Path):
     os.chdir(Path)
     boolyCond = False
     sommeCond = 0
-    with open("ckt5_EXP_EventLog.csv") as csv_Condensateur:
+    with open("ckt5_EXP_EventLog.CSV") as csv_Condensateur:
         csv_reader2 = csv.reader(csv_Condensateur, delimiter=',')
         for row in csv_reader2:
             boolyCond = row[4].find('OPENED')
@@ -92,7 +101,7 @@ def ListToDict(liste):
 # Fonction qui compte combien de surcharge et de sous-charge durant chaque itérations
 
 def surcharge_souschargeLOOP():
-    os.chdir("C:\\Users\\LinaMarcelaZuluaga\\Documents\\OpenDSS\\EPRITestCircuits\\ckt5\\resultats")
+    os.chdir(r"C:\Users\abcotech\Desktop\Résultats")
 
 
     Heure = 1
@@ -194,7 +203,7 @@ def Variation_tensionLOOP(Path):
 def listerPertesTotales(Path):
     os.chdir(Path)
     somme = 0.0
-    with open("ckt5_EXP_LOSSES.csv") as csv_losses:
+    with open("ckt5_EXP_LOSSES.CSV") as csv_losses:
         csv_reader6 = csv.reader(csv_losses, delimiter=',')
         list_iterator = iter(csv_reader6)
         next(list_iterator)
@@ -276,7 +285,6 @@ def SurchargeTransfos(Path):
 #ckt5_EXP_Power.csv
 
 def SubTransfoPower(Path):
-    os.chdir(Path)
     import math
     KVAR = 0.0
     KW = 0.0
@@ -291,8 +299,12 @@ def SubTransfoPower(Path):
                 # La données de la puissance apparente n'était pas dans le fichier, je l'ai donc calculé
                 KVA = math.sqrt((float(row[3])**2)+(float(row[2])**2))
                 FP = abs((float(row[2]))/KVA)
+                KW_IT.append(KW)
+                KVAR_IT.append(KVAR)
                 if KVA > 10000:
-                    print("Sub transfos en surcharge de :", KVA-10000)
+                    Surcharge = ((KVA - 10000) / 10000) * 100
+                    listeSurcharge.append(Surcharge)
+                    print("Sub transfos en surcharge de :", Surcharge)
                 break
     csv_file.close()
 
@@ -389,7 +401,13 @@ def SaveInfoCSV(éléments_à_sauvegarder, nomDuFichier, Path):
         FILE.close()
 
 
-
+def Monte_Carlo(liste_Valeurs):
+    values = liste_Valeurs
+    Moy= statistics.mean(values)
+    ecart_type= statistics.stdev(values)
+    int_min = Moy-2*ecart_type
+    int_max = Moy+2*ecart_type
+    print("95% des valeurs sont comprises entre",int_min,"et",int_max)
 
 
 Heure = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24]

@@ -2,7 +2,7 @@
 import os
 import Resultats_Finaux
 # Mettre le Path qui se rend où vous mettez tous les fichiers provenant d'OpenDSS (les exports)
-Path = "C:\\Users\\fanni\\Downloads\\Nouveau dossier"
+Path = r"C:\Users\abcotech\Documents\transelec"
 #C:\Users\LinaMarcelaZuluaga\Documents\OpenDSS\EPRITestCircuits\ckt5
 from Resultats_Finaux import *
 
@@ -25,10 +25,10 @@ PertesLines, PertesTransfo = ListerPertesTransfoLines(Path) #Return la somme des
 # Plotter_Graphes("Évolution du minimum de tension sur le réseau (Simulation témoin)", "Heures", "Tension en V", Heure, Variation[1], "SimulationTMin","C:\\Users\\LinaMarcelaZuluaga\\Documents\\OpenDSS\\EPRITestCircuits\\ckt5\\Resultats")
 # Plotter_Graphes("Évolution de la variation de tension sur le réseau (Simulation témoin)", "Heures", "Tension en V", Heure, Variation[2], "SimulationTVariation","C:\\Users\\LinaMarcelaZuluaga\\Documents\\OpenDSS\\EPRITestCircuits\\ckt5\\Resultats")
 
-SaveInfoCSV(ListeSurcharge, "ListeSurchargeSimuTémoin", "C:\\Users\\fanni\\Downloads\\Nouveau dossier\\ResultatsTraitées")
-SaveInfoCSV(ListeSouscharge, "ListeSouschargeSimuTémoin", "C:\\Users\\fanni\\Downloads\\Nouveau dossier\\ResultatsTraitées")
-SaveInfoCSV(Dict1, "SurchargeTransfo1SimuTémoin", "C:\\Users\\fanni\\Downloads\\Nouveau dossier\\ResultatsTraitées")
-SaveInfoCSV(Dict2, "SurchargeTransfo2SimuTémoin", "C:\\Users\\fanni\\Downloads\\Nouveau dossier\\ResultatsTraitées")
+SaveInfoCSV(ListeSurcharge, "ListeSurchargeSimuTémoin", r"C:\Users\abcotech\Desktop\Résultats")
+SaveInfoCSV(ListeSouscharge, "ListeSouschargeSimuTémoin", r"C:\Users\abcotech\Desktop\Résultats")
+SaveInfoCSV(Dict1, "SurchargeTransfo1SimuTémoin", r"C:\Users\abcotech\Desktop\Résultats")
+SaveInfoCSV(Dict2, "SurchargeTransfo2SimuTémoin", r"C:\Users\abcotech\Desktop\Résultats")
 
 
 
